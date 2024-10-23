@@ -1,0 +1,13 @@
+[package]
+name = "math-ops"
+version = "1.0.0"
+authors = ["Anand Aiyer <aaiyer@gmail.com>"]
+edition = "2021"
+license = "MIT"
+description = "Mathematical and statistical operations on vectors"
+readme = "README.md"
+keywords = ["math", "statistics", "vector", "operations", "numeric"]
+
+[dependencies]
+num-traits = "0.2"
+comfy-table = "7.1"
