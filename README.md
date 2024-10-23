@@ -4,7 +4,7 @@
 
 ## Features
 
-- **Statistical Methods**: `mean`, `median`, `variance`, `standard deviation`, `quantile`, and `interquartile range (IQR)`.
+- **Statistical Methods**: `mean`, `median`, `variance`, `standard deviation`, `quantile`, `interquartile range (IQR)` and `cumulative sum`.
 - **Normalization**: Min-max normalization and standardization (mean 0, standard deviation 1).
 - **Sorting Methods**: `sorted` and `sort_in_place`.
 - **Vector Arithmetic**: Addition, subtraction, multiplication, division, and modulus with both vectors and scalars using explicit methods.
@@ -48,6 +48,9 @@ fn main() {
   println!("IQR (f64): {:?}", data_f64.iqr());
   println!("Quantile(25%) (f64): {:?}", data_f64.quantile(0.25));
   println!("Quantile(95%) (f64): {:?}", data_f64.quantile(0.95));
+
+  // Cumulative Sum
+  println!("Cumulative Sum (f64): {:?}", data_f64.cumsum());
 
   // Summary
   println!("\n=== Summary ===");

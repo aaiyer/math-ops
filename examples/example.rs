@@ -23,6 +23,9 @@ fn main() {
   println!("Quantile(25%) (f64): {:?}", data_f64.quantile(0.25));
   println!("Quantile(95%) (f64): {:?}", data_f64.quantile(0.95));
 
+  // Cumulative Sum
+  println!("Cumulative Sum (f64): {:?}", data_f64.cumsum());
+
   // Summary
   println!("\n=== Summary ===");
   let summary = data_f64.summary();

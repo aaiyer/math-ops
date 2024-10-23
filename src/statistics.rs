@@ -2,6 +2,7 @@
 
 use crate::vector::Vector;
 use num_traits::{Float, ToPrimitive};
+use crate::WrapAsVector;
 
 /// Trait definition for Statistics, generic over type T.
 /// T is expected to be a floating-point type like f32 or f64.
@@ -43,8 +44,12 @@ pub trait Statistics<T> {
   /// Returns the maximum value in the dataset, ignoring NaN values.
   /// Returns an Option<T>, where None represents an empty dataset.
   fn max(&self) -> Option<T>;
-}
 
+  /// Computes the cumulative sum of the data.
+  /// Returns a `Vector<T>`, where each element is the cumulative sum up to that index.
+  /// NaN values are ignored in the summation.
+  fn cumsum(&self) -> Vector<T>;
+}
 
 impl<T> Statistics<T> for Vector<T>
 where
@@ -146,5 +151,17 @@ where
       .cloned()
       .filter(|x| !x.is_nan())
       .max_by(|a, b| a.partial_cmp(b).unwrap())
+  }
+
+  fn cumsum(&self) -> Vector<T> {
+    let mut cum_sum = T::zero();
+    let mut result = Vec::with_capacity(self.len());
+    for &x in self.iter() {
+      if !x.is_nan() {
+        cum_sum = cum_sum + x;
+      }
+      result.push(cum_sum);
+    }
+    result.wrap_as_vector()
   }
 }
