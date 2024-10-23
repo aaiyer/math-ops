@@ -1,17 +1,8 @@
-use math_ops::{
-  Normalize,
-  SortOps,
-  Statistics,
-  SummaryOps,
-  UnwrapToVec,
-  Vector,
-  VectorOps,
-  WrapAsVector,
-};
+use math_ops::{IntoVector, Normalize, SortOps, Statistics, SummaryOps, Vector, VectorOps};
 
 fn main() {
   // Sample data with NaN values
-  let data_f64 = vec![1.0_f64, 2.0, f64::NAN, 4.0, 5.0].wrap_as_vector();
+  let data_f64 = vec![1.0_f64, 2.0, f64::NAN, 4.0, 5.0].into_vector();
 
   // Statistical operations
   println!("=== Statistical Operations ===");
@@ -45,7 +36,7 @@ fn main() {
 
   // Arithmetic Operations with Vectors
   println!("\n=== Arithmetic Operations with Vectors ===");
-  let data2 = vec![5.0_f64, 4.0, 3.0, 2.0, 1.0].wrap_as_vector();
+  let data2 = vec![5.0_f64, 4.0, 3.0, 2.0, 1.0].into_vector();
   let sum_vec = &data_f64 + &data2;
   println!("Vector Addition: {:?}", sum_vec);
   let sub_vec = &data_f64 - &data2;
@@ -78,16 +69,16 @@ fn main() {
     .iter()
     .map(|&x| x as f64)
     .collect::<Vec<_>>()
-    .wrap_as_vector();
+    .into_vector();
   let float_data_f32: Vector<f32> = int_data
     .iter()
     .map(|&x| x as f32)
     .collect::<Vec<_>>()
-    .wrap_as_vector();
+    .into_vector();
   println!("Converted to f64: {:?}", float_data_f64);
   println!("Converted to f32: {:?}", float_data_f32);
 
   // Unwrap to Vec
-  let original_vec: Vec<f64> = float_data_f64.unwrap_to_vec();
+  let original_vec: Vec<f64> = float_data_f64.into_vec();
   println!("Unwrapped to Vec<f64>: {:?}", original_vec);
 }

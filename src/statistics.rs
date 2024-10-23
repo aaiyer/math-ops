@@ -2,7 +2,7 @@
 
 use crate::vector::Vector;
 use num_traits::{Float, ToPrimitive};
-use crate::WrapAsVector;
+use crate::IntoVector;
 
 /// Trait definition for Statistics, generic over type T.
 /// T is expected to be a floating-point type like f32 or f64.
@@ -162,6 +162,6 @@ where
       }
       result.push(cum_sum);
     }
-    result.wrap_as_vector()
+    result.into_vector()
   }
 }
